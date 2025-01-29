@@ -8,18 +8,20 @@ const port = 3000;
 app.use(bodyParser.json());
 
 
-mongoose.connect('mongodb+srv://veterinaria:<1q2w3e4r5t6y>@clusterv.kpyru.mongodb.net/?retryWrites=true&w=majority&appName=ClusterV');
+mongoose.connect('mongodb+srv://2121100624:2121100624@cluster0.k161o.mongodb.net/');
 const db = mongoose.connection;
 db.on('error', (error) => console.error(error));
 db.once('open', () => console.log('Connected to Database'));
 
 
-app.delete('/:id', async (req, res) => {
-  const id = req.params.id;
- await User.findByIdAndDelete(id);
-  res.json('Delete successfully');
-});
+app.post('/', (req, res) =>{
+  const {name, age, email} = req.body;
+  const newUser = new User ({name: name , age:age , email: email});
+  newUser.save();
+  res.json('api is working');
+  console.log( "New Uswer", newUser)
 
+});
 //TODO:  this
 
 
