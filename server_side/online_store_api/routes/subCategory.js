@@ -31,6 +31,7 @@ router.get('/:id', asyncHandler(async (req, res) => {
 
 // Create a new sub-category
 router.post('/', asyncHandler(async (req, res) => {
+    console.log("ping")
     const { name, categoryId } = req.body;
     if (!name || !categoryId) {
         return res.status(400).json({ success: false, message: "Name and category ID are required." });
